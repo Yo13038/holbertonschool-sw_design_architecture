@@ -1,0 +1,36 @@
+---
+title: 0-class_diagram
+---
+classDiagram
+    class Library {
+        +add_book(book: Book) None
+        +register_user(user: User) None
+        +create_loan(book: Book, user: User) None
+    }
+
+    class Book {
+        +str title
+        +str author
+        +bool state
+        +mark_as_unavailable() None
+        +mark_as_available() None
+    }
+
+    class User {
+        +str name
+        +str email
+    }
+
+    class Loan {
+        +str start_date
+        +str end_date
+        +close_loan() None
+    }
+
+    %% Relations et Multiplicités
+    Library "1" *-- "0..*" Book : manages
+    Library "1" *-- "0..*" User : manages
+    Library "1" *-- "0..*" Loan : manages
+
+    Loan "0..*" --> "1" Book : references
+    Loan "0..*" --> "1" User : references
