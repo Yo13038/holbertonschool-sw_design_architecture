@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-Module of a observer pattern
-"""
-
 from __future__ import annotations
 from typing import Protocol
 
@@ -18,8 +14,8 @@ class NewsSubject:
     def subscribe(
         self,
         observer: Observer,
-        topics: set[str] | None = None) -> None:
-        
+        topics: set[str] | None = None,
+    ) -> None:
         if observer in self._subs:
             return  # ignore duplicate subscribe for same instance
         self._subs[observer] = topics
